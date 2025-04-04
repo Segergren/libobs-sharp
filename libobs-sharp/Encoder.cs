@@ -54,6 +54,14 @@ namespace LibObs {
         public static extern obs_encoder_t obs_encoder_get_ref(obs_encoder_t outpencoderut);
 
         /// <summary>
+        /// Sets a video source for an output. Can be a scene or a source.
+        /// </summary>
+        /// <param name="output">The output to set the video source for</param>
+        /// <param name="source">The video source</param>
+        [DllImport(importLibrary, CallingConvention = importCall)]
+        public static extern void obs_output_set_video_source(obs_output_t output, IntPtr source);
+
+        /// <summary>
         /// <para>https://obsproject.com/docs/reference-encoders.html?highlight=obs_encoder_release#c.obs_encoder_release</para>
         /// <para>Releases a reference to an encoder. When the last reference is released, the encoder is destroyed.</para>
         /// </summary>

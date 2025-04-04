@@ -293,6 +293,13 @@ namespace LibObs {
         [DllImport(importLibrary, CallingConvention = importCall)]
         public static extern void obs_source_filter_add(obs_source_t source, obs_source_t filter);
 
+        /// <summary>
+        /// Shuts down the OBS core context.
+        /// https://obsproject.com/docs/reference-core.html#c.obs_shutdown
+        /// </summary>
+        [DllImport(importLibrary, CallingConvention = importCall)]
+        public static extern void obs_shutdown();
+
         public enum VideoResetError {
             OBS_VIDEO_SUCCESS = 0,
             OBS_VIDEO_FAIL = -1,

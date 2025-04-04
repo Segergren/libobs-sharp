@@ -17,8 +17,8 @@ namespace LibObs {
         [return: MarshalAs(UnmanagedType.I1)]
         public static extern bool proc_handler_call(proc_handler_t handler, string name, calldata_t _params);
 
-        [DllImport(importLibrary, CallingConvention = importCall, CharSet = importCharSet)]
+        [DllImport(importLibrary, CallingConvention = importCall, CharSet = CharSet.Ansi)]
         [return: MarshalAs(UnmanagedType.I1)]
-        public static extern bool calldata_get_string(calldata_t data, string name, out string str);
+        public static extern bool calldata_get_string(IntPtr cd, string name, out IntPtr str);
     }
 }

@@ -13,5 +13,11 @@ namespace LibObs {
 
         [DllImport(importLibrary, CallingConvention = importCall)]
         public static extern obs_sceneitem_t obs_scene_add(obs_scene_t scene, obs_source_t source);
+
+        [DllImport(importLibrary, CallingConvention = importCall)]
+        public static extern obs_source_t obs_scene_get_source(obs_scene_t scene);
+
+        [DllImport(importLibrary, CallingConvention = importCall)]
+        public static extern void obs_scene_release(obs_scene_t scene);
     }
 }

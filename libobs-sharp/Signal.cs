@@ -13,5 +13,7 @@ namespace LibObs {
 
         [DllImport(importLibrary, CallingConvention = importCall, CharSet = importCharSet)]
         public static extern void signal_handler_disconnect(signal_handler_t handler, string signal, signal_callback_t callback, IntPtr data);
+        [DllImport(importLibrary, CallingConvention = importCall, CharSet = importCharSet)]
+        public static extern IntPtr obs_source_get_signal_handler(IntPtr source);
     }
 }

@@ -36,27 +36,6 @@ namespace LibObs {
         }
 
         public static string GetLogMessage(string format, IntPtr args) {
-#if !WINDOWS
-            // special marshalling is needed on Linux desktop 64 bits.
-            var listStructure = PtrToStructure<VaListLinuxX64>(args);
-            var byteLength = 0;
-            UseStructurePointer(listStructure, listPointer => {
-                byteLength = Native.vsnprintf_linux(IntPtr.Zero, UIntPtr.Zero, format, listPointer) + 1;
-            });
-
-            var utf8Buffer = IntPtr.Zero;
-            try {
-                utf8Buffer = Marshal.AllocHGlobal(byteLength);
-
-                return UseStructurePointer(listStructure, listPointer => {
-                    Native.vsprintf_linux(utf8Buffer, format, listPointer);
-                    return utf8Buffer.FromUtf8();
-                });
-            }
-            finally {
-                Marshal.FreeHGlobal(utf8Buffer);
-            }
-#else
             var byteLength = Native.vsnprintf_windows(IntPtr.Zero, UIntPtr.Zero, format, args) + 1;
             if (byteLength <= 1)
                 return string.Empty;
@@ -70,7 +49,6 @@ namespace LibObs {
             finally {
                 Marshal.FreeHGlobal(buffer);
             }
-#endif
         }
 
         static string UseStructurePointer<T>(T structure, Func<IntPtr, string> action) where T : notnull {

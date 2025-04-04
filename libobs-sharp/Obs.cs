@@ -9,11 +9,9 @@ namespace LibObs {
     using video_t = IntPtr;
     public partial class Obs {
 
-#if WINDOWS
+
         public const string importLibrary = @"obs";
-#else
-        public const string importLibrary = @"libobs";
-#endif
+
         public const CallingConvention importCall = CallingConvention.Cdecl;
         public const CharSet importCharSet = CharSet.Ansi;
 

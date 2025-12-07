@@ -281,6 +281,15 @@ namespace LibObs {
         public static extern video_t obs_get_video();
 
         [DllImport(importLibrary, CallingConvention = importCall)]
+        public static extern void obs_set_video_levels(float sdr_white_level, float hdr_nominal_peak_level);
+
+        [DllImport(importLibrary, CallingConvention = importCall)]
+        public static extern float obs_get_video_sdr_white_level();
+
+        [DllImport(importLibrary, CallingConvention = importCall)]
+        public static extern float obs_get_video_hdr_nominal_peak_level();
+
+        [DllImport(importLibrary, CallingConvention = importCall)]
         public static extern void obs_source_set_volume(obs_source_t source, float volume);
 
         [DllImport(importLibrary, CallingConvention = importCall)]
